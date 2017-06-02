@@ -31,7 +31,5 @@ services:
     service_id: orion
   slack:
     service_id: slack
-  saucelabs:
-    service_id: saucelabs
   dra:
     service_id: draservicebroker
