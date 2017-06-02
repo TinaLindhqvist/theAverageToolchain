@@ -1,0 +1,37 @@
+version: '2'
+template:
+  name: "Toolchain Template to setup multiple tools"
+  description: "Toolchain template to be used in System Functional testing"
+toolchain:
+  name: 'systemfunctionaltest-{{timestamp}}'
+services:
+  sample-repo:
+    service_id: hostedgit
+    parameters:
+      repo_name: '{{toolchain.name}}'
+      repo_url: 'https://github.com/UserMalmo/StaticHtmlApp4UITest'
+      type: clone
+      has_issues: true
+  sample-build:
+    service_id: pipeline
+    parameters:
+      services:
+        - sample-repo
+      name: '{{toolchain.name}}'
+      ui-pipeline: true
+      configuration:
+        content:
+          $ref: pipeline.yml
+          $refType: text
+        env:
+          SAMPLE_REPO: sample-repo
+          CF_APP_NAME: '{{toolchain.name}}'
+        execute: true
+  webide:
+    service_id: orion
+  slack:
+    service_id: slack
+  saucelabs:
+    service_id: saucelabs
+  dra:
+    service_id: draservicebroker
