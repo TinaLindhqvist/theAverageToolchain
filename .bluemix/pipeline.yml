@@ -1,0 +1,30 @@
+---
+stages:
+- name: BUILD
+  inputs:
+  - type: git
+    branch: master
+    service: ${SAMPLE_REPO}
+  triggers:
+  - type: commit
+  jobs:
+  - name: Build
+    type: builder
+- name: DEPLOY
+  inputs:
+  - type: job
+    stage: BUILD
+    job: Build
+  triggers:
+  - type: stage
+  jobs:
+  - name: Deploy
+    type: deployer
+    target:
+      region_id: ibm:ys1:us-south
+      organization: bluemix_ui_load0330t005@mailinator.com
+      space: dev
+      application: ${CF_APP_NAME}
+    script: |
+      #!/bin/bash
+      cf push "${CF_APP}"
