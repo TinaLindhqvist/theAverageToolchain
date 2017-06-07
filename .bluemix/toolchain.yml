@@ -26,9 +26,9 @@ services:
         env:
           SAMPLE_REPO: sample-repo
           CF_APP_NAME: '{{toolchain.name}}'
-          PROD_SPACE_NAME: 'dev'
-          PROD_ORG_NAME: 'test'
-          PROD_REGION_ID: 'US SOUTH'
+          PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
+          PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
+          PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
         execute: false
   webide:
     service_id: orion
@@ -36,3 +36,9 @@ services:
     service_id: slack
   dra:
     service_id: draservicebroker
+form:
+  pipeline:
+    parameters:
+      prod-app-name: '{{services.sample-repo.parameters.repo_name}}'
+    schema:
+      $ref: deploy.json
