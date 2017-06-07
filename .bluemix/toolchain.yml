@@ -26,6 +26,9 @@ services:
         env:
           SAMPLE_REPO: sample-repo
           CF_APP_NAME: '{{toolchain.name}}'
+          PROD_SPACE_NAME: '{{prod-space}}'
+          PROD_ORG_NAME: '{{prod-organization}}'
+          PROD_REGION_ID: '{{prod-region}}'
         execute: false
   webide:
     service_id: orion
