@@ -10,3 +10,20 @@ stages:
   jobs:
   - name: Build
     type: builder
+- name: DEPLOY
+  inputs:
+  - type: job
+    stage: BUILD
+    job: Build
+  triggers:
+  - type: stage
+  properties:
+  - name: CF_APP_NAME
+    value: undefined
+    type: text
+  jobs:
+  - name: DeployJob
+    type: deployer
+    script: |
+      #!/bin/bash
+      # echo "test"
