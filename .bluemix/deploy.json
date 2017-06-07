@@ -1,9 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "Sample Deploy Stage",
-    "localized-struct":{
-        "$ref": "deploy-localized-struct.json"
-    },
     "description": "sample toolchain",
     "longDescription": "The Delivery Pipeline automates continuous deployment.",
     "type": "object",
@@ -19,63 +16,29 @@
        "prod-space": {
             "description": "The bluemix space",
             "type": "string"
-        },
-       "prod-app-name": {
-            "description": "The name of your Hello World app",
-            "type": "string"
         }
     },
-    "required": ["prod-region", "prod-organization", "prod-space", "prod-app-name"],
+    "required": ["prod-region", "prod-organization", "prod-space"],
     "form": [
        {
           "type": "validator",
           "url": "/devops/setup/bm-helper/helper.html"
        },        
         {
-          "type": "text",
-          "readonly": false,
-          "title": "App name",
-          "key": "prod-app-name"
+          "title": "Region",
+          "type": "select",
+          "key": "prod-region"
         },
         {
-            "type": "table",
-            "columnCount": 4,
-            "widths": ["15%", "28%", "28%", "28%"],
-            "items": [
-                {
-                  "type": "label",
-                  "title": ""
-                },
-                {
-                  "type": "label",
-                  "title": "Region"
-                },
-                {
-                  "type": "label",
-                  "title": "Organization"
-                },
-                {
-                  "type": "label",
-                  "title": "Space"
-                },
-                {
-                  "type": "label",
-                  "title": "Production stage"
-                },
-                {
-                  "type": "select",
-                  "key": "prod-region"
-                },
-                {
-                  "type": "select",
-                  "key": "prod-organization"
-                },
-                {
-                  "type": "select",
-                  "key": "prod-space",
-                  "readonly": false
-                }
-            ]
+          "title": "Organization",
+          "type": "select",
+          "key": "prod-organization"
+        },
+        {
+          "title": "Space",
+          "type": "select",
+          "key": "prod-space",
+          "readonly": false
         }
     ]
 }
