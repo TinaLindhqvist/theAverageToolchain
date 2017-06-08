@@ -2,7 +2,7 @@
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "Sample Deploy Stage",
     "description": "sample toolchain",
-    "longDescription": "The Delivery Pipeline automates continuous deployment.",
+    "longDescription": "Select the deploy targets",
     "type": "object",
     "properties": {
         "prod-region": {
