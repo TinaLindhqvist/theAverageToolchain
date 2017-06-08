@@ -31,4 +31,4 @@ stages:
       application: ${CF_APP_NAME}
     script: |
       #!/bin/bash
-      # echo "test"
+      echo "This Deploy stage is not Deploying - just writing this text :)"
