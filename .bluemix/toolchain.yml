@@ -9,9 +9,10 @@ services:
     service_id: hostedgit
     parameters:
       repo_name: '{{toolchain.name}}'
-      repo_url: 'https://github.com/UserMalmo/StaticHtmlApp4UITest'
+      repo_url: 'https://github.com/UserMalmo/AlmostEmpty4UITest'
       type: clone
       has_issues: true
+      enable_traceability: true
   sample-build:
     service_id: pipeline
     parameters:
@@ -38,7 +39,5 @@ services:
     service_id: draservicebroker
 form:
   pipeline:
-    parameters:
-      prod-app-name: '{{services.sample-repo.parameters.repo_name}}'
     schema:
       $ref: deploy.json
