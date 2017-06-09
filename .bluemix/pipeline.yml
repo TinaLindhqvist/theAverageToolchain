@@ -14,7 +14,7 @@ stages:
   inputs:
   - type: job
     stage: BUILD
-    job: Build
+    job: BuildJob
   triggers:
   - type: stage
   properties:
